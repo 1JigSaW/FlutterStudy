@@ -1,22 +1,17 @@
 import 'package:flutter/material.dart';
-//import 'package:flutter/painting.dart';
+import 'package:flutter/painting.dart';
+import 'package:my_app/screens/home_screen.dart';
 import 'package:my_app/screens/backend_screen.dart';
-import 'package:my_app/screens/frontend_screen.dart';
-import 'package:my_app/screens/mobile_screen.dart';
-import 'package:my_app/screens/general_screen.dart';
+import 'package:my_app/screens/start_game.dart';
 
-// import 'package:flutter_hangman/utilities/hangman_words.dart';
-// import 'game_screen.dart';
-// import 'loading_screen.dart';
-
-class HomeScreen extends StatefulWidget {
+class BackendScreen extends StatefulWidget {
   // final HangmanWords hangmanWords = HangmanWords();
 
   @override
-  _HomeScreenState createState() => _HomeScreenState();
+  _BackendScreenState createState() => _BackendScreenState();
 }
 
-class _HomeScreenState extends State<HomeScreen> {
+class _BackendScreenState extends State<BackendScreen> {
   @override
   Widget build(BuildContext context) {
     double height = MediaQuery.of(context).size.height;
@@ -26,6 +21,11 @@ class _HomeScreenState extends State<HomeScreen> {
       minimumSize: Size(200, 50),
       padding: const EdgeInsets.only(top: 20.0, bottom: 20.0),
     );
+    final ButtonStyle style_quest = ElevatedButton.styleFrom(
+      textStyle: const TextStyle(fontSize: 15),
+      minimumSize: Size(350, 5),
+      padding: const EdgeInsets.only(top: 10.0, bottom: 10.0),
+    );
     // widget.hangmanWords.readWords();
     return Scaffold(
       body: SafeArea(
@@ -33,37 +33,20 @@ class _HomeScreenState extends State<HomeScreen> {
         children: <Widget>[
           Center(
             child: Container(
-              color: Color.fromARGB(141, 0, 0, 0),
-              margin: const EdgeInsets.fromLTRB(242.0, 0.0, 0.0, 0.0),
-              padding: const EdgeInsets.fromLTRB(20, 0, 20, 5),
-              child: const Text(
-                "50%",
-                style: const TextStyle(
-                    color: Colors.white,
-                    fontSize: 40.0,
-                    fontWeight: FontWeight.w500,
-                    letterSpacing: 2.0),
+              margin: EdgeInsets.fromLTRB(0.0, 0.0, 250.0, 0.0),
+              child: ElevatedButton(
+                onPressed: () {
+                  Navigator.pop(context);
+                },
+                child: const Text('Go back!'),
               ),
             ),
           ),
           Center(
             child: Container(
-              margin: const EdgeInsets.fromLTRB(0.0, 100.0, 0.0, 0.0),
+              margin: EdgeInsets.fromLTRB(0.0, 120.0, 0.0, 0.0),
               child: Text(
-                "Programming",
-                style: const TextStyle(
-                    color: Colors.white,
-                    fontSize: 32.0,
-                    fontWeight: FontWeight.w500,
-                    letterSpacing: 2.0),
-              ),
-            ),
-          ),
-          Center(
-            child: Container(
-              //margin: EdgeInsets.fromLTRB(8.0, 45.0, 8.0, 8.0),
-              child: Text(
-                "Quiz",
+                "Backend",
                 style: TextStyle(
                     color: Colors.white,
                     fontSize: 32.0,
@@ -85,11 +68,11 @@ class _HomeScreenState extends State<HomeScreen> {
                     onPressed: () {
                       Navigator.of(context).push(
                         MaterialPageRoute(
-                          builder: (context) => BackendScreen(),
+                          builder: (context) => StartGameScreen(),
                         ),
                       );
                     },
-                    child: const Text('Backend'),
+                    child: const Text('Junior'),
                   ),
                   const SizedBox(
                     height: 15,
@@ -99,11 +82,11 @@ class _HomeScreenState extends State<HomeScreen> {
                     onPressed: () {
                       Navigator.of(context).push(
                         MaterialPageRoute(
-                          builder: (context) => FrontendScreen(),
+                          builder: (context) => StartGameScreen(),
                         ),
                       );
                     },
-                    child: const Text('Frontend'),
+                    child: const Text('Middle'),
                   ),
                   const SizedBox(
                     height: 15,
@@ -113,30 +96,28 @@ class _HomeScreenState extends State<HomeScreen> {
                     onPressed: () {
                       Navigator.of(context).push(
                         MaterialPageRoute(
-                          builder: (context) => MobileScreen(),
+                          builder: (context) => StartGameScreen(),
                         ),
                       );
                     },
-                    child: const Text('Mobile'),
-                  ),
-                  const SizedBox(
-                    height: 15,
-                  ),
-                  ElevatedButton(
-                    style: style,
-                    onPressed: () {
-                      Navigator.of(context).push(
-                        MaterialPageRoute(
-                          builder: (context) => GeneralScreen(),
-                        ),
-                      );
-                    },
-                    child: const Text('General'),
+                    child: const Text('Senior'),
                   ),
                   const SizedBox(
                     height: 15,
                   ),
                 ],
+              ),
+            ),
+          ),
+          Center(
+            child: Container(
+              margin: EdgeInsets.fromLTRB(0.0, 80.0, 0.0, 0.0),
+              child: ElevatedButton(
+                style: style_quest,
+                onPressed: () {
+                  Navigator.pop(context);
+                },
+                child: const Text('Questions'),
               ),
             ),
           ),
